@@ -5,7 +5,6 @@
   --glass: rgba(0,0,0,0.35);
   --glass2: rgba(0,0,0,0.20);
 
-  /* Accent em RGB (def: laranja) */
   --accent-r: 245;
   --accent-g: 158;
   --accent-b: 11;
@@ -40,22 +39,19 @@ html, body{
 .overlay.dock.br{ justify-content:flex-end;   align-items:flex-end; }
 
 .panel{
-  width: min(640px, 54vw);
+  width: min(680px, 56vw);
   border:1px solid var(--stroke);
   border-radius: var(--radius);
-
-  /* Fundo “glass” com brilhos */
   background:
     radial-gradient(900px 420px at 20% 0%, rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.18), transparent),
     radial-gradient(800px 460px at 90% 40%, rgba(96,165,250,0.16), transparent),
     linear-gradient(180deg, var(--glass), var(--glass2));
-
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   padding: 18px;
 
   opacity: 0;
-  transform: translateY(10px) scale(0.98);
+  transform: translateY(10px) scale(0.985);
   transition: transform var(--t) cubic-bezier(.2,.9,.2,1), opacity var(--t) ease;
 }
 
@@ -87,7 +83,7 @@ html, body{
   line-height: 1.05;
 }
 
-/* Single bullet */
+/* Single bullet (ativo) */
 .single{
   display:flex;
   align-items:center;
@@ -100,13 +96,19 @@ html, body{
   box-shadow: 0 22px 52px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.10);
 
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(8px);
   transition: opacity 520ms ease, transform 520ms ease;
 }
 
 .panel.ready .single{
   opacity: 1;
   transform: translateY(0);
+}
+
+/* animação PRO: quando troca de active, faz “swap” suave */
+.single.swap{
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .badge{
@@ -135,4 +137,8 @@ html, body{
   line-height: 1.15;
 }
 
-.single.noicon .badge{ display:none; }
+.micro{
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.70);
+}
